@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1169
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Central Archive Services", "Central Archive Services\Central Archive Services.dtproj", "{1826D598-5213-4CB2-B383-E1706D5CDCC9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1826D598-5213-4CB2-B383-E1706D5CDCC9}.Development|Default.ActiveCfg = Development
+		{1826D598-5213-4CB2-B383-E1706D5CDCC9}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {000B41F6-B24A-4107-8C4A-5E3E9E89AAB0}
+	EndGlobalSection
+EndGlobal
