@@ -1,0 +1,372 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/19/2020 7:14:30 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="KENYAHMIS"
+  DTS:CreatorName="KENYAHMIS\Administrator"
+  DTS:DTSID="{5F216AF5-BA9F-496D-8955-C497B7A3E796}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1300.371"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="ArchiveHTS"
+  DTS:PackageType="5"
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{19DDF6E9-10B1-4C8B-A8A0-5B6A8B2DFE41}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Archive Client"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Archive Client"
+      DTS:DTSID="{D64CBDDB-6B03-4293-B560-B3876F1DFC97}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Archive Client"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{742F3898-CEA5-47C4-A1AD-D12F8726029C}"
+          SQLTask:SqlStatementSource="-- Client&#xA;insert into HTSCENTRALARCHIVE.dbo.Clients&#xA;select * from [HTSCentral].[dbo].Clients&#xA;Where FacilityId IN (SELECT Id FROM [HTSCENTRALARCHIVE].[dbo].[Facilities])&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Archive Extracts"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Archive Extracts"
+      DTS:DTSID="{5DFE1114-4E1C-49BE-B471-A1138BBA79C6}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Archive Extracts">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Archive Extracts\ClientLinkages"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="ClientLinkages"
+          DTS:DTSID="{67FB8E35-7B97-4E5D-A400-1955C5365A99}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ClientLinkages"
+          DTS:ThreadHint="5">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{742F3898-CEA5-47C4-A1AD-D12F8726029C}"
+              SQLTask:SqlStatementSource="insert into HTSCENTRALARCHIVE.dbo.ClientLinkages&#xA;select * from [HTSCentral].[dbo].ClientLinkages&#xA;Where FacilityId IN (SELECT Id FROM [HTSCENTRALARCHIVE].[dbo].[Facilities])&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Archive Extracts\ClientPartners"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="ClientPartners"
+          DTS:DTSID="{86241BFF-C200-4314-9CB1-266C1F781FB7}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ClientPartners"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{742F3898-CEA5-47C4-A1AD-D12F8726029C}"
+              SQLTask:SqlStatementSource="&#xA;insert into HTSCENTRALARCHIVE.dbo.ClientPartners&#xA;select * from [HTSCentral].[dbo].ClientPartners&#xA;Where FacilityId IN (SELECT Id FROM [HTSCENTRALARCHIVE].[dbo].[Facilities])&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Archive Extracts\HtsClientTests"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="HtsClientTests"
+          DTS:DTSID="{0460B516-0BF9-4416-B092-05AB6590EB72}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="HtsClientTests"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{742F3898-CEA5-47C4-A1AD-D12F8726029C}"
+              SQLTask:SqlStatementSource="&#xA;insert into HTSCENTRALARCHIVE.dbo.HtsClientTests&#xA;select * from [HTSCentral].[dbo].HtsClientTests&#xA;Where FacilityId IN (SELECT Id FROM [HTSCENTRALARCHIVE].[dbo].[Facilities])&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Archive Extracts\HtsClientTracing"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="HtsClientTracing"
+          DTS:DTSID="{38DCA458-387F-40C9-9E24-809EBA2D3959}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="HtsClientTracing"
+          DTS:ThreadHint="3">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{742F3898-CEA5-47C4-A1AD-D12F8726029C}"
+              SQLTask:SqlStatementSource="&#xA;insert into HTSCENTRALARCHIVE.dbo.HtsClientTracing&#xA;select * from [HTSCentral].[dbo].HtsClientTracing&#xA;Where FacilityId IN (SELECT Id FROM [HTSCENTRALARCHIVE].[dbo].[Facilities])&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Archive Extracts\HtsTestKits"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="HtsTestKits"
+          DTS:DTSID="{9E83C0D7-22AA-43FC-A90A-C4895C99507D}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="HtsTestKits"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{742F3898-CEA5-47C4-A1AD-D12F8726029C}"
+              SQLTask:SqlStatementSource="&#xA;insert into HTSCENTRALARCHIVE.dbo.HtsTestKits&#xA;select * from [HTSCentral].[dbo].HtsTestKits&#xA;Where FacilityId IN (SELECT Id FROM [HTSCENTRALARCHIVE].[dbo].[Facilities])&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Archive Extracts\PartnerTracings"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="PartnerTracings"
+          DTS:DTSID="{9167A460-BF2E-4041-A45B-D674252ED89E}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="PartnerTracings"
+          DTS:ThreadHint="6">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{742F3898-CEA5-47C4-A1AD-D12F8726029C}"
+              SQLTask:SqlStatementSource="insert into HTSCENTRALARCHIVE.dbo.HtsPartnerTracings&#xA;select * from [HTSCentral].[dbo].HtsPartnerTracings&#xA;Where FacilityId IN (SELECT Id FROM [HTSCENTRALARCHIVE].[dbo].[Facilities])" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Archive Extracts\PNS"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="PNS"
+          DTS:DTSID="{0B8F7325-8554-403B-B1A0-4EF0B72B5C09}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="PNS"
+          DTS:ThreadHint="4">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{742F3898-CEA5-47C4-A1AD-D12F8726029C}"
+              SQLTask:SqlStatementSource="&#xA;insert into HTSCENTRALARCHIVE.dbo.HtsPartnerNotificationServices&#xA;select * from [HTSCentral].[dbo].HtsPartnerNotificationServices&#xA;Where FacilityId IN (SELECT Id FROM [HTSCENTRALARCHIVE].[dbo].[Facilities])" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Archive Facility"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Archive Facility"
+      DTS:DTSID="{4161ED4B-6E67-49E3-87AD-0BD2D3893EEB}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Archive Facility"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{742F3898-CEA5-47C4-A1AD-D12F8726029C}"
+          SQLTask:SqlStatementSource="&#xA;-- MasterFacility&#xA;insert into HTSCENTRALARCHIVE.dbo.MasterFacilities&#xA;select * from [HTSCentral].[dbo].MasterFacilities where SnapshotDate is not null;&#xA;&#xA;-- Facility&#xA;insert into HTSCENTRALARCHIVE.dbo.Facilities&#xA;select  * from [HTSCentral].[dbo].Facilities where SnapshotDate is not null;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Delete Facility"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Delete Facility"
+      DTS:DTSID="{499CEE6F-508B-4130-A6DE-6790AA8FCCAC}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Delete Facility"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{742F3898-CEA5-47C4-A1AD-D12F8726029C}"
+          SQLTask:SqlStatementSource="-- Clear Facility&#xA;delete from &#xA;[HTSCentral].[dbo].[Facilities] where Id IN (select Id from HTSCENTRALARCHIVE.[dbo].[Facilities])&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{98CD0FF2-E5DA-455F-A55F-011519898CB7}"
+      DTS:From="Package\Archive Facility"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Archive Client" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{C94FF4B6-D935-47EA-A1F7-911DBF71FCF7}"
+      DTS:From="Package\Archive Client"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Archive Extracts" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{A52C5F05-F871-403B-A3B8-CDBE47EBA726}"
+      DTS:From="Package\Archive Extracts"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Delete Facility" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="270,42"
+          Id="Package\Archive Extracts\ClientPartners"
+          TopLeft="291,23" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Archive Extracts\HtsTestKits"
+          TopLeft="615,14" />
+        <NodeLayout
+          Size="212,42"
+          Id="Package\Archive Extracts\HtsClientTests"
+          TopLeft="30,79" />
+        <NodeLayout
+          Size="247,42"
+          Id="Package\Archive Extracts\HtsClientTracing"
+          TopLeft="266,77" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Archive Extracts\PNS"
+          TopLeft="536,86" />
+        <NodeLayout
+          Size="241,42"
+          Id="Package\Archive Extracts\ClientLinkages"
+          TopLeft="33,25" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Archive Extracts\PartnerTracings"
+          TopLeft="318,146" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="941,198"
+          Size="941,241"
+          Id="Package\Archive Extracts"
+          TopLeft="200,129" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Archive Facility"
+          TopLeft="265,65" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Archive Client"
+          TopLeft="604,59" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Delete Facility"
+          TopLeft="526,461" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="428,83">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="176,0"
+              Start="0,0"
+              End="168.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="168.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="685.5,101">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-15,28"
+              Start="0,0"
+              End="-15,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10"
+                    Point2="0,14"
+                    Point3="-4,14" />
+                  <mssgle:LineSegment
+                    End="-11,14" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-11,14"
+                    Point2="-15,14"
+                    Point3="-15,18" />
+                  <mssgle:LineSegment
+                    End="-15,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="670.5,370">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-63,91"
+              Start="0,0"
+              End="-63,83.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.5"
+                    Point2="0,45.5"
+                    Point3="-4,45.5" />
+                  <mssgle:LineSegment
+                    End="-59,45.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-59,45.5"
+                    Point2="-63,45.5"
+                    Point3="-63,49.5" />
+                  <mssgle:LineSegment
+                    End="-63,83.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

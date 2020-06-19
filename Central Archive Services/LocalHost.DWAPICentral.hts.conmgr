@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="LocalHost.DWAPICentral.hts"
+  DTS:DTSID="{1411655C-1739-486E-8ECB-54EB6E2E5E7C}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=.;User ID=hts;Initial Catalog=DWAPICentral;Provider=SQLOLEDB.1;Persist Security Info=True;Application Name=SSIS-Central Archive Services-{1411655C-1739-486E-8ECB-54EB6E2E5E7C}LocalHost.DWAPICentral.hts;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA9uXDU3nUdkKGAdY9rtU5qwAAAAACAAAAAAAQZgAAAAEAACAAAABeBzepTxZPDGxmDpog4i1APOawzLTe8IQY4BKrSx2cDQAAAAAOgAAAAAIAACAAAAARdRAjnzCPCDD0c0Nifqf8xHnu+vPgFTjcE4qd40pWc4AAAADkYO3aA1cjDDUORKeq6x0pByTUEwaXmWaHhtzmHZiV1ummtiO/G7ZLbFP8L9rKYVHgtTAyB70v3SOkZcHrH3TTt/SYtVEpgse0HDnZ6O0SBAZoys6Wsemi65hhrBDAYdav1pL+9ZL4rx/X33sG7weUlEG7lRugOs5v5tPVEv5LZUAAAABCQ+ZoXtDC5b2c1ewgtYdMAhmO4KG9o2eKwUg2sgfAmvigw3Eueyucnc9ALRl/42kw+bSahFgVq0NkwEXGPGfr</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

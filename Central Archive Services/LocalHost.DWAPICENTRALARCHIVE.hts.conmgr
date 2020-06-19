@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="LocalHost.DWAPICENTRALARCHIVE.hts"
+  DTS:DTSID="{742F3898-CEA5-47C4-A1AD-D12F8726029C}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=.;User ID=hts;Initial Catalog=DWAPICENTRALARCHIVE;Provider=SQLOLEDB.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-ArchiveCT-{742F3898-CEA5-47C4-A1AD-D12F8726029C}LocalHost.DWAPICENTRALARCHIVE.hts;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA9uXDU3nUdkKGAdY9rtU5qwAAAAACAAAAAAAQZgAAAAEAACAAAACtjPRMrksu0Slr3xIJ4kq344SnYqlTGrLHhjXiexGuUQAAAAAOgAAAAAIAACAAAAAqhkIhviDAedPddqnKRq1ow6czvsphQ/n60zhQ+Q8Zg4AAAAAcKlXsNDm2Zj/UMaLlJm7cc7/IJ9Z7eVR/u9bzS51ZdY7g26eaWjVEfdJ5Eum95LYlKvJu9wc1Gtk4LGrZ3lO4w9AuzRcClmwA8BHNgfHEKZhIOht5tOAfPJeON7HW6jg13cyruQMuaFVS7xj35X5BtxDwCpSEjmQepcZouZgpHEAAAADbJ2A3Mi6FdVxUvwi4fXWlQNFdOYaMItX0CVKgT5TCpnt2jyMiefIcdpan7dG19KLlHpDHrEJXYdiPn75OA1h6</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

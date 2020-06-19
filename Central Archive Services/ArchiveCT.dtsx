@@ -1,0 +1,372 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/19/2020 7:14:30 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="KENYAHMIS"
+  DTS:CreatorName="KENYAHMIS\Administrator"
+  DTS:DTSID="{B92887BD-0C1F-44E4-9D5B-E9381F1C37F8}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1300.371"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="ArchiveCT"
+  DTS:PackageType="5"
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{A10E3454-8DB3-4C02-A886-48841B80DBDD}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Archive Extracts"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Archive Extracts"
+      DTS:DTSID="{BE9ACDA8-08FD-45E4-BA14-D124FFBA7EAD}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Archive Extracts">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Archive Extracts\PatientAdverseEventExtract"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="PatientAdverseEventExtract"
+          DTS:DTSID="{93eedff6-5cb3-4d3e-a0d5-d5920627738f}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="PatientAdverseEventExtract"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{742F3898-CEA5-47C4-A1AD-D12F8726029C}"
+              SQLTask:SqlStatementSource="-- [PatientAdverseEventExtract]&#xA;insert into DWAPICENTRALARCHIVE.dbo.[PatientAdverseEventExtract]&#xA;select * from  [DWAPICentral].[dbo].PatientAdverseEventExtract&#xA;where PatientId IN (&#xA;SELECT Id FROM  DWAPICENTRALARCHIVE.dbo.PatientExtract&#xA;WHERE FacilityId IN (SELECT ID FROM DWAPICENTRALARCHIVE.dbo.Facility))&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Archive Extracts\PatientArtExtract"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="PatientArtExtract"
+          DTS:DTSID="{79f82d57-4549-439d-b211-49d2f287b13c}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="PatientArtExtract"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{742F3898-CEA5-47C4-A1AD-D12F8726029C}"
+              SQLTask:SqlStatementSource="&#xA;-- [PatientArtExtract]&#xA;insert into DWAPICENTRALARCHIVE.dbo.[PatientArtExtract]&#xA;select * from  [DWAPICentral].[dbo].PatientArtExtract&#xA;where PatientId IN (&#xA;SELECT Id FROM  DWAPICENTRALARCHIVE.dbo.PatientExtract&#xA;WHERE FacilityId IN (SELECT ID FROM DWAPICENTRALARCHIVE.dbo.Facility))&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Archive Extracts\PatientBaselinesExtract"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="PatientBaselinesExtract"
+          DTS:DTSID="{328428a1-2a1c-439e-aff2-6a01ad1745b4}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="PatientBaselinesExtract"
+          DTS:ThreadHint="3">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{742F3898-CEA5-47C4-A1AD-D12F8726029C}"
+              SQLTask:SqlStatementSource="&#xA;-- [[PatientBaselinesExtract]]&#xA;insert into DWAPICENTRALARCHIVE.dbo.[PatientBaselinesExtract]&#xA;select * from  [DWAPICentral].[dbo].[PatientBaselinesExtract]&#xA;where PatientId IN (&#xA;SELECT Id FROM  DWAPICENTRALARCHIVE.dbo.PatientExtract&#xA;WHERE FacilityId IN (SELECT ID FROM DWAPICENTRALARCHIVE.dbo.Facility))" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Archive Extracts\PatientLaboratoryExtract"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="PatientLaboratoryExtract"
+          DTS:DTSID="{ea7def31-6050-445b-b7ec-4289e6c93c23}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="PatientLaboratoryExtract"
+          DTS:ThreadHint="4">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{742F3898-CEA5-47C4-A1AD-D12F8726029C}"
+              SQLTask:SqlStatementSource="&#xA;-- [[PatientLaboratoryExtract]]&#xA;insert into DWAPICENTRALARCHIVE.dbo.[PatientLaboratoryExtract]&#xA;select * from  [DWAPICentral].[dbo].[PatientLaboratoryExtract]&#xA;where PatientId IN (&#xA;SELECT Id FROM  DWAPICENTRALARCHIVE.dbo.PatientExtract&#xA;WHERE FacilityId IN (SELECT ID FROM DWAPICENTRALARCHIVE.dbo.Facility))&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Archive Extracts\PatientPharmacyExtract"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="PatientPharmacyExtract"
+          DTS:DTSID="{b48e0a85-22b5-4d2c-a033-e7dc3315cef0}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="PatientPharmacyExtract"
+          DTS:ThreadHint="5">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{742F3898-CEA5-47C4-A1AD-D12F8726029C}"
+              SQLTask:SqlStatementSource="&#xA;-- [[PatientPharmacyExtract]]&#xA;insert into DWAPICENTRALARCHIVE.dbo.[PatientPharmacyExtract]&#xA;select * from  [DWAPICentral].[dbo].[PatientPharmacyExtract]&#xA;where PatientId IN (&#xA;SELECT Id FROM  DWAPICENTRALARCHIVE.dbo.PatientExtract&#xA;WHERE FacilityId IN (SELECT ID FROM DWAPICENTRALARCHIVE.dbo.Facility))" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Archive Extracts\PatientStatus"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="PatientStatus"
+          DTS:DTSID="{42b71e2a-7c39-4d44-8ba7-4dd7f359f228}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="PatientStatus"
+          DTS:ThreadHint="6">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{742F3898-CEA5-47C4-A1AD-D12F8726029C}"
+              SQLTask:SqlStatementSource="-- [[PatientStatusExtract]]&#xA;insert into DWAPICENTRALARCHIVE.dbo.[PatientStatusExtract]&#xA;select * from  [DWAPICentral].[dbo].[PatientStatusExtract]&#xA;where PatientId IN (&#xA;SELECT Id FROM  DWAPICENTRALARCHIVE.dbo.PatientExtract&#xA;WHERE FacilityId IN (SELECT ID FROM DWAPICENTRALARCHIVE.dbo.Facility))&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Archive Extracts\PatientVisitExtract"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="PatientVisitExtract"
+          DTS:DTSID="{dbb35bf5-4f07-4ca9-bed2-e77e6c74c090}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="PatientVisitExtract"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{742F3898-CEA5-47C4-A1AD-D12F8726029C}"
+              SQLTask:SqlStatementSource="insert into DWAPICENTRALARCHIVE.dbo.[PatientVisitExtract]&#xA;select * from  [DWAPICentral].[dbo].[PatientVisitExtract]&#xA;where PatientId IN (&#xA;SELECT Id FROM  DWAPICENTRALARCHIVE.dbo.PatientExtract&#xA;WHERE FacilityId IN (SELECT ID FROM DWAPICENTRALARCHIVE.dbo.Facility))" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Archive Facility"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Archive Facility"
+      DTS:DTSID="{8680a8b5-6b96-40f1-9418-a37456561e80}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Archive Facility"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{742F3898-CEA5-47C4-A1AD-D12F8726029C}"
+          SQLTask:SqlStatementSource="-- MasterFacility&#xA;insert into DWAPICENTRALARCHIVE.dbo.MasterFacility&#xA;select * from [DWAPICentral].[dbo].MasterFacility where SnapshotDate is not null;&#xA;&#xA;-- Facility&#xA;insert into DWAPICENTRALARCHIVE.dbo.Facility&#xA;select  * from [DWAPICentral].[dbo].[Facility] where SnapshotDate is not null;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Archive Patient"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Archive Patient"
+      DTS:DTSID="{130507B4-E0FF-4C0E-BB1B-DE083E61CFC2}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Archive Patient"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{742F3898-CEA5-47C4-A1AD-D12F8726029C}"
+          SQLTask:SqlStatementSource="&#xA;-- Patient&#xA;insert into DWAPICENTRALARCHIVE.dbo.PatientExtract&#xA;select * from  [DWAPICentral].[dbo].PatientExtract&#xA;Where FacilityId IN (SELECT Id FROM [DWAPICENTRALARCHIVE].[dbo].[Facility])" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Delete Facility"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Delete Facility"
+      DTS:DTSID="{c662244a-1c1a-4f44-8881-970f4b6cc9d7}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Delete Facility"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{742F3898-CEA5-47C4-A1AD-D12F8726029C}"
+          SQLTask:SqlStatementSource="&#xA;-- Clear Facility&#xA;delete from &#xA;[DWAPICentral].dbo.Facility where Id IN (select Id from DWAPICENTRALARCHIVE.[dbo].Facility)&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{807F2E0E-A9BF-4261-BC0F-B8BB0362F179}"
+      DTS:From="Package\Archive Facility"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Archive Patient" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{BA7F4035-70F9-4838-A6AD-BECC1341976C}"
+      DTS:From="Package\Archive Patient"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Archive Extracts" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{ECF9EC28-9DB6-476A-B3C2-0A8C4C1BB238}"
+      DTS:From="Package\Archive Extracts"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Delete Facility" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="270,42"
+          Id="Package\Archive Extracts\PatientAdverseEventExtract"
+          TopLeft="291,23" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Archive Extracts\PatientArtExtract"
+          TopLeft="615,14" />
+        <NodeLayout
+          Size="212,42"
+          Id="Package\Archive Extracts\PatientBaselinesExtract"
+          TopLeft="30,79" />
+        <NodeLayout
+          Size="247,42"
+          Id="Package\Archive Extracts\PatientLaboratoryExtract"
+          TopLeft="266,77" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Archive Extracts\PatientPharmacyExtract"
+          TopLeft="536,86" />
+        <NodeLayout
+          Size="241,42"
+          Id="Package\Archive Extracts\PatientStatus"
+          TopLeft="33,25" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Archive Extracts\PatientVisitExtract"
+          TopLeft="318,146" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="941,198"
+          Size="941,241"
+          Id="Package\Archive Extracts"
+          TopLeft="200,129" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Archive Facility"
+          TopLeft="265,65" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Archive Patient"
+          TopLeft="604,59" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Delete Facility"
+          TopLeft="526,461" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="428,83">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="176,0"
+              Start="0,0"
+              End="168.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="168.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="685.5,101">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-15,28"
+              Start="0,0"
+              End="-15,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10"
+                    Point2="0,14"
+                    Point3="-4,14" />
+                  <mssgle:LineSegment
+                    End="-11,14" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-11,14"
+                    Point2="-15,14"
+                    Point3="-15,18" />
+                  <mssgle:LineSegment
+                    End="-15,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="670.5,370">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-63,91"
+              Start="0,0"
+              End="-63,83.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.5"
+                    Point2="0,45.5"
+                    Point3="-4,45.5" />
+                  <mssgle:LineSegment
+                    End="-59,45.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-59,45.5"
+                    Point2="-63,45.5"
+                    Point3="-63,49.5" />
+                  <mssgle:LineSegment
+                    End="-63,83.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
