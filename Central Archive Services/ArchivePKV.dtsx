@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="ArchivePKV"
   DTS:PackageType="5"
-  DTS:VersionBuild="24"
-  DTS:VersionGUID="{D5FC08FC-52D7-41A1-8BC5-545CCC576495}">
+  DTS:VersionBuild="44"
+  DTS:VersionGUID="{A3C5BE96-F464-4C53-AA2C-AF83EE9688AE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -30,7 +30,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{742F3898-CEA5-47C4-A1AD-D12F8726029C}"
-          SQLTask:SqlStatementSource="&#xA;&#xA;-- MasterFacility&#xA;insert into CBSCENTRALARCHIVE.dbo.MasterFacilities&#xA;select * from [CBSCentral].[dbo].MasterFacilities where SnapshotDate is not null;&#xA;&#xA;-- Facility&#xA;insert into CBSCENTRALARCHIVE.dbo.Facilities&#xA;select  * from [CBSCentral].[dbo].Facilities where SnapshotDate is not null;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="&#xA;&#xA;-- MasterFacility&#xA;insert into CBSCENTRALARCHIVE.dbo.MasterFacilities&#xA;select * from [CBSCentral].[dbo].MasterFacilities where SnapshotDate is not null and id not in (&#xA;select id from [CBSCENTRALARCHIVE].[dbo].[MasterFacilities] )&#xA;&#xA;&#xA;-- Facility&#xA;insert into CBSCENTRALARCHIVE.dbo.Facilities&#xA;select  * from [CBSCentral].[dbo].Facilities where SnapshotDate is not null and SiteCode not in(&#xA;select SiteCode from [CBSCENTRALARCHIVE].[dbo].Facilities)&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -97,31 +97,31 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="163,42"
+          Size="149,42"
           Id="Package\Archive Facility"
           TopLeft="265,65" />
         <NodeLayout
-          Size="163,42"
+          Size="149,42"
           Id="Package\Archive Patient"
-          TopLeft="604,59" />
+          TopLeft="605,59" />
         <NodeLayout
-          Size="163,42"
+          Size="145,42"
           Id="Package\Delete Facility"
           TopLeft="512,263" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="428,83">
+          TopLeft="414,83">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="176,0"
+              EndConnector="191,0"
               Start="0,0"
-              End="168.5,0">
+              End="183.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="168.5,0" />
+                    End="183.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -132,13 +132,13 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="685.5,101">
+          TopLeft="679.5,101">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-92,162"
+              EndConnector="-95,162"
               Start="0,0"
-              End="-92,154.5">
+              End="-95,154.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -149,13 +149,13 @@
                     Point2="0,81"
                     Point3="-4,81" />
                   <mssgle:LineSegment
-                    End="-88,81" />
+                    End="-91,81" />
                   <mssgle:CubicBezierSegment
-                    Point1="-88,81"
-                    Point2="-92,81"
-                    Point3="-92,85" />
+                    Point1="-91,81"
+                    Point2="-95,81"
+                    Point3="-95,85" />
                   <mssgle:LineSegment
-                    End="-92,154.5" />
+                    End="-95,154.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
